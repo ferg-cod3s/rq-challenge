@@ -85,8 +85,7 @@ public class EmployeeController implements IEmployeeController<Employee, CreateE
         } catch (CompletionException e) {
             // Unwrap the CompletionException to get the underlying cause
             Throwable cause = e.getCause();
-            if (cause instanceof IllegalArgumentException) {
-                IllegalArgumentException iae = (IllegalArgumentException) cause;
+            if (cause instanceof IllegalArgumentException iae) {
                 if (iae.getMessage().contains("not found")) {
                     throw new ResponseStatusException(HttpStatus.NOT_FOUND, iae.getMessage());
                 }

@@ -22,7 +22,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -117,7 +116,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public CompletableFuture<Employee> createEmployee(@NotNull @RequestBody CreateEmployeeRequest employeeInput) {
+    public CompletableFuture<Employee> createEmployee(@NotNull CreateEmployeeRequest employeeInput) {
         log.info("Creating new employee: {}", employeeInput);
 
         Employee employee = Employee.builder()
@@ -147,7 +146,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public CompletableFuture<String> deleteEmployee(@NotNull @RequestBody DeleteEmployeeRequest deleteRequest) {
+    public CompletableFuture<String> deleteEmployee(@NotNull DeleteEmployeeRequest deleteRequest) {
         log.info("Deleting employee: {}", deleteRequest);
         if (deleteRequest == null || deleteRequest.getId() == null) {
             throw new IllegalArgumentException("Delete request and employee Id must not be null");

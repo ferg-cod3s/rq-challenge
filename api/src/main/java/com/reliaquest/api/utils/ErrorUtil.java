@@ -58,7 +58,6 @@ public class ErrorUtil {
      * Returns a standardized retry configuration for rate-limited API calls.
      * Uses adaptive backoff strategy to handle the mock server's random rate limiting behavior.
      * The mock server randomly chooses when to rate-limit, so we need to handle this properly.
-     *
      * Strategy:
      * - 4 retry attempts to handle multiple consecutive rate limits
      * - Exponential backoff starting at 1 second, growing to handle longer server backoffs

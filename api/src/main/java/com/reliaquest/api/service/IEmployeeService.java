@@ -4,7 +4,9 @@ package com.reliaquest.api.service;
 import com.reliaquest.api.model.CreateEmployeeRequest;
 import com.reliaquest.api.model.DeleteEmployeeRequest;
 import com.reliaquest.api.model.Employee;
+import com.reliaquest.api.utils.RegexUtil;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.util.List;
@@ -15,13 +17,13 @@ public interface IEmployeeService {
 
     CompletableFuture<List<Employee>> findAllEmployeesByName(@NotBlank @Size(min = 1, max = 100) String name);
 
-    CompletableFuture<Employee> findEmployeeById(@NotBlank @Pattern(regexp = "^[a-zA-Z0-9-]+$") String id);
+    CompletableFuture<Employee> findEmployeeById(@NotBlank @Pattern(regexp = RegexUtil.ALPHANUMERIC_HYPHEN_REGEX) String id);
 
     CompletableFuture<Integer> getHighestSalaryOfEmployees();
 
     CompletableFuture<List<String>> getTop10HighestEarningEmployeeNames();
 
-    CompletableFuture<Employee> createEmployee(CreateEmployeeRequest employee);
+    CompletableFuture<Employee> createEmployee(@NotNull CreateEmployeeRequest employee);
 
-    CompletableFuture<String> deleteEmployee(DeleteEmployeeRequest deleteEmployeeRequest);
+    CompletableFuture<String> deleteEmployee(@NotNull DeleteEmployeeRequest deleteEmployeeRequest);
 }
