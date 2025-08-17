@@ -3,7 +3,17 @@ plugins {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'         // MVC controllers
+    implementation 'org.springframework.boot:spring-boot-starter-validation'  // @Valid and Bean Validation
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'     // WebClient for Mock API calls
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
 }
 
 springBoot {
