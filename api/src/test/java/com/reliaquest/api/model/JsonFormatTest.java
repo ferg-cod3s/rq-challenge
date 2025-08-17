@@ -143,7 +143,7 @@ public class JsonFormatTest {
     }
 
     @Test
-    void testValidationConstraintsWork() throws Exception {
+    void testValidationConstraintsWork() {
         // Given - Invalid CreateEmployeeRequest
         CreateEmployeeRequest invalidRequest =
                 new CreateEmployeeRequest("", "", -1, 10); // Empty name/title, negative salary, age too low
